@@ -6,4 +6,4 @@
  * used to represent MCArtifact state.
  * </p>
  */
-package io.github.mcartifact.mcartifact.api;
+package io.github.mcartifact.api;
