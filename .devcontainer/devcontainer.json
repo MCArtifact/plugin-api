@@ -1,5 +1,5 @@
 {
-    "name": "Java 21 & Gradle (MCClauneck)",
+    "name": "Java 21 & Gradle (MCArtifact)",
     "build": {
         "dockerfile": "Dockerfile",
         "context": ".."
