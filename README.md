@@ -228,6 +228,91 @@ To implement a custom storage solution:
 
 ---
 
+## Dependency (GitHub Packages)
+
+<details>
+<summary><b>Maven (with GitHub Actions credentials)</b></summary>
+
+Add the GitHub Packages repository:
+
+```xml
+<repositories>
+    <repository>
+        <id>github</id>
+        <name>GitHub Packages</name>
+        <url>https://maven.pkg.github.com/MCArtifact/plugin-api</url>
+    </repository>
+</repositories>
+```
+
+Then add the dependency:
+
+```xml
+<dependency>
+  <groupId>io.github.mcartifact</groupId>
+  <artifactId>mcartifact-api</artifactId>
+  <version>2026.0.4-1</version>
+</dependency>
+```
+
+Configure authentication using environment variables (`GITHUB_ACTOR` and `GITHUB_TOKEN`):
+
+```xml
+<servers>
+    <server>
+        <id>github</id>
+        <username>${env.GITHUB_ACTOR}</username>
+        <password>${env.GITHUB_TOKEN}</password>
+    </server>
+</servers>
+```
+
+</details>
+
+<details>
+<summary><b>Gradle (Groovy DSL)</b></summary>
+
+```groovy
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/MCArtifact/plugin-api")
+        credentials {
+            username = System.getenv("GITHUB_ACTOR")
+            password = System.getenv("GITHUB_TOKEN")
+        }
+    }
+}
+
+dependencies {
+    implementation "io.github.mcartifact:mcartifact-api:2026.0.4-1"
+}
+```
+
+</details>
+
+<details>
+<summary><b>Gradle (Kotlin DSL)</b></summary>
+
+```kotlin
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/MCArtifact/plugin-api")
+        credentials {
+            username = System.getenv("GITHUB_ACTOR")
+            password = System.getenv("GITHUB_TOKEN")
+        }
+    }
+}
+
+dependencies {
+    implementation("io.github.mcartifact:mcartifact-api:2026.0.4-1")
+}
+```
+
+</details>
+
+---
+
 ## Design Principles
 
 - Separation of concerns (async vs sync)
