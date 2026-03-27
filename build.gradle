@@ -1,16 +1,16 @@
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'io.github.mcengine.gradle.plugin.version-calculator' version '1.0.0'
+    id 'io.github.mcengine.gradle.plugin.version-calculator' version '1.0.2'
 }
 
 group = project.property('project-group')
 
-def artifactId = project.findProperty('project-artifact-id') ?: 'mcartifact-api'
-def artifactName = project.findProperty('project-artifact-name') ?: 'MCArtifact API'
-def artifactDescription = project.findProperty('project-artifact-description') ?: "Public interfaces for the MCArtifact ecosystem."
-def gitOwner = project.findProperty('git-org-name') ?: 'MCArtifact'
-def gitRepo = project.findProperty('git-org-repository') ?: 'plugin-api'
+def artifactName = project.findProperty('project-artifact-name')
+def artifactDescription = project.findProperty('project-artifact-description')
+
+def gitOwner = project.findProperty('git-org-name')
+def gitRepo = project.findProperty('git-org-repository')
 def gitUrl = "https://github.com/${gitOwner}/${gitRepo}"
 
 println "[${project.name}] Final Version (via Plugin): ${project.version}"
@@ -22,7 +22,6 @@ repositories {
 publishing {
     publications {
         create('mavenJava', MavenPublication) {
-            artifactId = artifactId 
             from components.java
 
             pom {
